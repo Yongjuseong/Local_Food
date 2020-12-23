@@ -3,17 +3,18 @@ from PIL import Image
 from django.db.models.fields.files import ImageField,ImageFieldFile
 
 class ThumbnailImageFieldFile(ImageFieldFile): # Define custom ImageFieldFile to write image file and delete it in file system
-    def _add_thumb(s):
-        parts = s.split(".")
-        parts.insert(-1,"thumb")
-        if parts[-1].lower() not in ['jpeg','jpg']: #Check file extension
+    def _add_thumb(self,s):
+        parts = s.split('.')
+        parts.insert(-1,'thumb')
+        if parts[-1].lower() not in ('jpeg','jpg'): #Check file extension
             parts[-1]='jpg'
-        return ".".join(parts)
+        return '.'.join(parts)
+
     @property # Define thumb_path property to use method as a member variable.
     def _thumb_path(self):
         return self._add_thumb(self.path)
 
-    @property # Define thumb_url(Thumbnail url
+    @property # Define thumb_url (Thumbnail url)
     def thumb_url(self):
         return self._add_thumb(self.url)
 
@@ -24,7 +25,7 @@ class ThumbnailImageFieldFile(ImageFieldFile): # Define custom ImageFieldFile to
         size=(self.field.thumb_width,self.field.thumb_height)
         img.thumbnail(size)
         background = Image.new('RGB',size,(255,255,255))
-        box=(int((size[0]-img.size[0])/2,int(size[1]-img.size[1])/2))
+        box = (int((size[0] - img.size[0]) / 2), int((size[1] - img.size[1]) / 2))
         background.paste(img,box)
         background.save(self._thumb_path,'JPEG')
 
