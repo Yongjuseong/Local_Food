@@ -23,4 +23,4 @@ class Merchandise(models.Model): # Define Merchandise table
         return self.title
 
     def get_absolute_url(self):
-        return reverse('sell:Merchandise_detail',args=(self.id,))
+        return reverse('sell:sell_detail',args=(self.id,))

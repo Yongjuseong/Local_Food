@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<title>sell_detail</title>
+
+<body>
+
+    
+    <div class="row"> 
+        <div class="col-md-9">
+            <a href="{{ object.image.url }}">
+                <img src="{{ object.image.url }}" style="width: 100%;">
+            </a>
+        </div>
+    
+        <ul class="col-md-3 mt-3">
+            <li class="h3">{{object.title}}</li>
+            <li class="h5">{{object.brand}}</li>
+            <li class="h5">Rating : {{object.rating}}</li>
+            <hr>
+            <li class="h5">Price : ${{object.price}}</li>
+            <hr>
+            <li class="h4">About this item</li>
+                {% if object.description %}<p>{{ object.description|linebreaks }}</p>
+                {% else %}<p>(blank)</p>{% endif %}
+        </ul>
+    </div>
+
+</body>
+</html>

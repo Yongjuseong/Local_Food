@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<title>sell_all.html</title>
+
+<body>
+    <h1>Sell List</h1>
+    <br>
+
+    <ul>
+        {% for sell in object_list %}
+        <li><a href="{% url 'sell:sell_detail' sell.id %}">{{ sell }}</a></li>
+        {% endfor %}
+    </ul>
+
+</body>
+
