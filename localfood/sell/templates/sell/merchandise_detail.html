@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<title>sell_detail</title>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Sell_Merchandise_detail{% endblock %}
 
+{% block content %}
     
     <div class="row"> 
         <div class="col-md-9">
@@ -13,17 +12,18 @@
         </div>
     
         <ul class="col-md-3 mt-3">
-            <li class="h3">{{object.title}}</li>
-            <li class="h5">{{object.brand}}</li>
-            <li class="h5">Rating : {{object.rating}}</li>
+            <br><br>
+            <li class="h1">{{object.title}}</li>
+            <br>
+            <li class="h4">{{object.brand}}</li>
+            <br>
+            <li class="h4">Rating : {{object.rating}}</li>
             <hr>
-            <li class="h5">Price : ${{object.price}}</li>
+            <li class="h4">Price : ${{object.price}}</li>
             <hr>
-            <li class="h4">About this item</li>
+            <li class="h3">About this item</li>
                 {% if object.description %}<p>{{ object.description|linebreaks }}</p>
                 {% else %}<p>(blank)</p>{% endif %}
         </ul>
     </div>
-
-</body>
-</html>
+{% endblock %}

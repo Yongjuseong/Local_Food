@@ -2,12 +2,12 @@
 
 {% load static %}
 
-{% block title %}home.html{% endblock %}
+{% block title %}LOFOO(Local Food){% endblock %}
 
 {% block extra-style %}
 <style type="text/css">
 .home-image {
-    background-image: url("{% static 'img/lion.jpg' %}");
+    background-image: url("{% static 'img/Main.jpg' %}");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -17,13 +17,13 @@
     padding: 20px 0 0 20px;
 }
 .title {
-    color: #c80;
+    color: rgb(0, 204, 10);
     font-weight: bold;
 }
 .powered {
     position: relative;
     top: 77%;
-    color: #cc0;
+    color: rgb(0, 204, 10);
     font-style: italic;
 }
 </style>
@@ -31,33 +31,31 @@
 
 {% block content %}
     <div class="home-image">
-        <h2 class="title">Django - Python Web Programming</h2>
-        <h4 class="powered"><i class="fas fa-arrow-circle-right"></i> powered by django and bootstrap.</h4>
+        <h2 class="title">LOFOO(Local Food)</h2>
+        <h4 class="powered"><i class="fas fa-arrow-circle-right"></i>For Healthy Life</h4>
     </div>
 
     <hr style="margin: 10px 0;">
 
     <div class="row text-center">
         <div class="col-sm-6">
-            <h3>Bookmark App</h3>
-            <p>Bookmark is a Uniform Resource Identifier (URI)
-                that is stored for later retrieval in any of various storage formats.
-                You can store your own bookmarks by Bookmark application.
-                It's also possible to update or delete your bookmarks.</p>
+            <h3>Sell App</h3>
+            <p>This application is sales bulletin board for local food.between customers and customers.
+                The sales is B2C or C2C or B2B, everything is possible.
+                But the important point is that the merchandises in that application is based on the user's location.
+                You can sell your merchandises and buy merchandises by Sell application.
+                It's also possible to update or delete your merchandises.</p>
         </div>
         <div class="col-sm-6">
-            <h3>Blog App</h3>
-            <p>This application makes it possible to log daily events or write your own interests
-                such as hobbies, techniques, etc.
-                A typical blog combines text, digital images, and links to other blogs, web pages,
-                and other media related to its topic.</p>
+            <h3>Chat App</h3>
+            <p></p>
         </div>
     </div>
 {% endblock content %}
 
 {% block footer %}
 <footer class="fixed-bottom bg-info">
-    <div class="text-white font-italic text-right mr-5">Copyright &copy; 2019 DjangoBook by shkim</div>
+    <div class="text-white font-italic text-right mr-5">Copyright &copy; 2019 DjangoBook by shkim // + 2020 Yongju Seong</div>
 </footer>
 {% endblock %}
 

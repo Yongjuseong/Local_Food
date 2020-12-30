@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<title>sell_all.html</title>
+{% block title %}Sell_All_Merchandise_List{% endblock %}
 
-<body>
+{% block content %}
     <h1>Sell List</h1>
     <br>
 
@@ -11,6 +11,6 @@
         <li><a href="{% url 'sell:sell_detail' sell.id %}">{{ sell }}</a></li>
         {% endfor %}
     </ul>
-
-</body>
+    
+{% endblock %}
 

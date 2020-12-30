@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import  static # Add for sell.image
 from django.conf import settings # Add for sell.image
+from localfood.views import HomeView # Add HomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #-----
+    path('',HomeView.as_view(),name='home'), # Add Home view
     path('sell/', include('sell.urls')), # Add sell app's url
 ] + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT) # Add for sell.image
