@@ -1,0 +1,6 @@
+<Project To do>
+Start Project and make framework - 12/23 (1 hours)
+Design Sell-Merchandise database Model and implement the function that administrator can add data(Sell-Merchandise) in database - 12/24 (1.5 hours thinking how many attributes the model has)
+Design and add customer's views to see Sell-Merchandise data  - 12/30 (2.5 hours)
+Design and add the customer's home view and link with customer's views(seeing Sell-Merchandise data) -
+
