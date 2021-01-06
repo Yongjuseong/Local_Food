@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}global_search.html{% endblock %}
+
+{% block content %}
+
+    <h1>Sell-Merchandise Search</h1>
+    <br>
+
+    <form action="." method="post"> {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+    </form>
+
+    <br/><br/>
+
+    {% if object_list %}
+        {% for merchandise in object_list %}
+        <h2><a href='{{ merchandise.get_absolute_url }}'>{{ merchandise.title }}</a></h2>
+        <img src="{{ merchandise.image.url }}" style="width: 40%;">
+        <p><span >Brand: </span><span>{{ merchandise.brand }}</span></p>
+        <p><span>Description: </span>{{ merchandise.description }}</p>
+        {% endfor %}
+
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found !</i></b>
+    {% endif %}
+
+{% endblock %}
+

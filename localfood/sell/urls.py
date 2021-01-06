@@ -10,4 +10,7 @@ urlpatterns = [
 
     #Example: /sell/sell/99
     path('sell/<int:pk>/',views.SellDV.as_view(),name='sell_detail'),
+
+    #Example: /sell/search/
+    path('search/',views.SearchFormView.as_view(),name='global_search'),
 ]
