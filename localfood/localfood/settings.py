@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #--- above is django's basic apps / 이 위는 장고의 기본 앱
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
+    'widget_tweaks', # Add for auth functions ( for using many forms) 인증 기능 위해 추가 , 많은 폼 사용 위함
     'sell.apps.SellConfig', # Sell app add
 ]
 
@@ -123,4 +127,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# LOGIN_REDIRECT_URL='/' #Edit for auth function
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL='/' #Edit for auth function
