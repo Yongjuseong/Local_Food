@@ -6,9 +6,10 @@ Design Sell-Merchandise database Model and implement the function that administr
 Design and add customer's views to see Sell-Merchandise data (Adding Sales bulletin board)  - 2020/12/30 (2.5 hours)
 Design and add the customer's home view and link with the customer's sales bulletin board view(seeing Sell-Merchandise data) - 2020/12/31 (1.5 hours)
 Design and add util - Sell_merchandise search functions(title&brand & description) & search view - 2021/01/06 - (2.0 hours)
+Design and add authentification function - 2021/01/08 -
+
 
 <Plan>
-Design and add authentification function
 Design and add editing content function
 Design and add tag function 
 Edit Sell-Merchandise view
