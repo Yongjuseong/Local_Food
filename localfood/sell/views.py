@@ -6,6 +6,12 @@ from sell.forms import SellSearchForm  # Add for search function
 from django.db.models import Q  # Add for search function
 from django.shortcuts import render  # Add for search function
 
+#Add these things for add,edit function below.
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from localfood.views import OwnerOnlyMixin
+from django.views.generic import CreateView,UpdateView,DeleteView
 
 # Create your views here.
 class SellLV(ListView):
@@ -31,6 +37,30 @@ class SearchFormView(FormView): # Define global searchForm
 
         return render(self.request,self.template_name,context) # No Redirection, return HttpResponse object
 
+# Add class views for add, edit function below.
+class MerchandiseCV(LoginRequiredMixin,CreateView): # Define Merchandise CreateView for every user in LOFOO
+    model = Merchandise
+    fields = ('title','brand','price','image','description')
+    success_url = reverse_lazy('sell:index')
 
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+class MerchandiseChangeLV(LoginRequiredMixin,ListView):  # Define Merchandise ChangeView for every user in LOFOO
+    model = Merchandise
+    template_name = 'sell/merchandise_change_list.html'
+
+    def get_queryset(self):
+        return Merchandise.objects.filter(owner=self.request.user)
+
+class MerchandiseUV(OwnerOnlyMixin,UpdateView): # Define Merchandise UpdateView for the merchandise's owner
+    model = Merchandise
+    fields = ('title','brand','price','image','description')
+    success_url = reverse_lazy('sell:index')
+
+class MerchandiseDelV(OwnerOnlyMixin,DeleteView): # Define Merchandise DeleteView for the merchandise's owner
+    model= Merchandise
+    success_url = reverse_lazy('sell:index')
 
 

@@ -11,10 +11,10 @@ class Merchandise(models.Model): # Define Merchandise table
     price = models.FloatField('PRICE')
     image=ThumbnailImageField(upload_to='merchandise/%Y/%m')
     description = models.TextField('Merchandise Description',blank=True)
-    rating = models.FloatField('RATING')
+    rating = models.FloatField('RATING',blank=True,null=True)
     create_dt = models.DateTimeField('CREATE DATE',auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE',auto_now=True)
-    #owner = models.ForeignKey('auth.User',on_delete=models.CASCADE,verbose_name='OWNER',blank =True,null=True) # Add for editting contents
+    owner = models.ForeignKey('auth.User',on_delete=models.CASCADE,verbose_name='OWNER',blank =True,null=True) # Add for add, editing function
 
     class Meta:
         ordering=('id',)
