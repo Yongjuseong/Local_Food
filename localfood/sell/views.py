@@ -13,12 +13,26 @@ from django.urls import reverse_lazy
 from localfood.views import OwnerOnlyMixin
 from django.views.generic import CreateView,UpdateView,DeleteView
 
+#Add for comment function
+from django.conf import settings
+
 # Create your views here.
 class SellLV(ListView):
     model=Merchandise
 
+# Edit class for comment function
 class SellDV(DetailView):
     model=Merchandise
+
+    # Add a method for comment function
+    def get_context_data(self, **kwargs): # For adding context variable
+        context = super().get_context_data(**kwargs) # Allocate context variables from original context variables coming from super() method
+        context['disqus_short'] = f"{settings.DISQUS_SHORTNAME}" # Get a value of context variables from settings.py
+        context['disqus_id'] = f"merchandise-{self.object.id}-{self.object.slug}" # Get a value of context variables from settings.py = ex) merchandise-PK-SLUG
+        context['disqus-url'] = f"{settings.DISQUS_MY_DOMAIN}{self.object.get_absolute_url()}"
+        context['disqus_title'] = f"{self.object.slug}" # Define the name of page
+        return context
+
 
 
 #FormView -> if data is vaild , FormView class would do form_valid() function and redirect valid url.
@@ -62,5 +76,4 @@ class MerchandiseUV(OwnerOnlyMixin,UpdateView): # Define Merchandise UpdateView 
 class MerchandiseDelV(OwnerOnlyMixin,DeleteView): # Define Merchandise DeleteView for the merchandise's owner
     model= Merchandise
     success_url = reverse_lazy('sell:index')
-
 

@@ -1,29 +1,68 @@
 {% extends "base.html" %}
 
 {% block title %}Sell_Merchandise_detail{% endblock %}
+<!--Add style for comment function to make this page looks well-->
+{% block extra-style %}
+<style>
+.merchandise-body{
+    width:80%;
+    margin: auto;
+    font-family:"Lucida Grande",Verdana,Arial,sans-serif;
+    font-size:16px;
+}
+</style>
+{% endblock extra-style %}
 
 {% block content %}
+    <div class = "merchandise-body">
+        <div class="row"> 
+            <div class="col-md-9">
+                <a href="{{ object.image.url }}">
+                    <img src="{{ object.image.url }}" style="width: 100%;">
+                </a>
+            </div>
     
-    <div class="row"> 
-        <div class="col-md-9">
-            <a href="{{ object.image.url }}">
-                <img src="{{ object.image.url }}" style="width: 100%;">
-            </a>
+            <ul class="col-md-3 mt-3">
+                <br><br>
+                <li class="h1">{{object.title}}</li>
+                <br>
+                <li class="h4">{{object.brand}}</li>
+                <br>
+                <li class="h4">Rating : {{object.rating}}</li>
+                <hr>
+                <li class="h4">Price : ${{object.price}}</li>
+                <hr>
+             <li class="h3">About this item</li>
+                    {% if object.description %}<p>{{ object.description|linebreaks }}</p>
+                    {% else %}<p>(blank)</p>{% endif %}
+            </ul>
         </div>
-    
-        <ul class="col-md-3 mt-3">
-            <br><br>
-            <li class="h1">{{object.title}}</li>
-            <br>
-            <li class="h4">{{object.brand}}</li>
-            <br>
-            <li class="h4">Rating : {{object.rating}}</li>
-            <hr>
-            <li class="h4">Price : ${{object.price}}</li>
-            <hr>
-            <li class="h3">About this item</li>
-                {% if object.description %}<p>{{ object.description|linebreaks }}</p>
-                {% else %}<p>(blank)</p>{% endif %}
-        </ul>
+
+        <br>
+        <div id="disqus_thread"></div>
     </div>
+{% endblock %}
+
+{% block extra-script %} <!-- Below is getting comments stored from DISQUS platform-->
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        
+
+        var disqus_config = function () {
+        this.page.identifier = '{{disqus_id}}'; //Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = '{{disqus_url}}';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.title= '{{disqs_title}}'; // Name of page to show the title in Disqus site
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{disqus_short}}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 {% endblock %}

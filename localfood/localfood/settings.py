@@ -129,3 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL='/' #Edit for auth function
+
+# Add for comment function
+DISQUS_SHORTNAME='lofoo' # Name for my project in DISQUS
+DISQUS_MY_DOMAIN='http://192.168.56.101:8001' # Local domain
